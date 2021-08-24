@@ -1,0 +1,105 @@
+<div class="search">
+  <div class="search-container">
+    <h3>GET PACKAGE DETAILS</h3>
+    <p style="color: gray;">Get your package details using your package rejistration number</p>
+
+    <!-- Warning for empty feild
+    <div *ngIf="isRegNo" class="alert alert-warning" role="alert">
+      Input feild is empty. Please check again.
+    </div>
+
+    warning no matched entry
+    <div *ngIf="noPackage" class="alert alert-warning" role="alert">
+      Enterd REJISTRATION NUMBER doesn't match with our records.
+    </div> -->
+
+    <form>
+      <input [(ngModel)]="regNo" type="text" name="regNo" id="regNo" placeholder="Registration Number (eg : 2021/ST/1001)">
+      <input id="getbtn" type="button" value="GET DETAILS" (click)="getPackageDetails()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    </form>
+
+    <!-- Modal -->
+    <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">PACKAGE DETAILS</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <!--for empty feild-->
+          <div *ngIf="isRegNo" class="modal-body">
+            <p>Input feild is empty. Please check again.</p>
+          </div>
+
+          <!--for  noPackage-->
+          <div *ngIf="noPackage" class="modal-body">
+            <p>Enterd REJISTRATION NUMBER doesn't match with our records.</p>
+          </div>
+
+          <div *ngIf="activeModal" class="modal-body">
+
+            <form>
+
+              <label for="rejistrationNumber" class="col-form-label">Package Rejistration Number</label>
+              <input type="text" name="rejistrationNumber" id="rejistrationNumber" class="form-control" value="{{searchedPackage.pkgRegistrationNumber}}" disabled>
+
+              <label for="rejistrationstatus" class="col-form-label">Package Rejistration Status</label>
+              <input type="text" name="rejistrationstatus" id="rejistrationstatus" class="form-control" value="{{searchedPackage.registrationStatus}}" disabled>
+
+              <label for="bearerName" class="col-form-label">Bearer Name</label>
+              <input type="text" name="bearerName" id="bearerName" class="form-control" value="{{searchedPackage.bearerName}}" disabled>
+
+              <label for="bearerAddress" class="col-form-label">Bearer Address</label>
+              <input type="text" name="bearerAddress" id="bearerAddress" class="form-control" value="{{searchedPackage.bearerAddress}}" disabled>
+
+              <label for="contactDetails" class="col-form-label">Bearer Contact Number</label>
+              <input type="text" name="contactDetails" id="contactDetails" class="form-control" value="{{searchedPackage.contactDetails}}" disabled>
+
+              <label for="bearerIdType" class="col-form-label">Type of the Bearer ID</label>
+              <input type="text" name="bearerIdType" id="bearerIdType" class="form-control" value="{{searchedPackage.bearerIdType}}" disabled>
+
+              <label for="bearerId" class="col-form-label">Bearer ID Number</label>
+              <input type="text" name="bearerId" id="bearerId" class="form-control" value="{{searchedPackage.bearerId}}" disabled>
+
+              <label for="deliveryDate" class="col-form-label">Delivery Date</label>
+              <input type="text" name="deliveryDate" id="deliveryDate" class="form-control" value="{{searchedPackage.deliveryDate}}" disabled>
+
+              <label for="deliveryType" class="col-form-label">Deliverty Type</label>
+              <input type="text" name="deliveryType" id="deliveryType" class="form-control" value="{{searchedPackage.deliveryType}}" disabled>
+
+              <label for="pkgTypeCode" class="col-form-label">Package Type</label>
+              <input type="text" name="pkgTypeCode" id="pkgTypeCode" class="form-control" value="{{searchedPackage.pkgTypeCode}}" disabled>
+
+              <label for="pkgWeightCategory" class="col-form-label">Weight Category</label>
+              <input type="text" name="pkgWeightCategory" id="pkgWeightCategory" class="form-control" value="{{searchedPackage.pkgWeightCategory}}" disabled>
+
+              <label for="receiverName" class="col-form-label">Reaceiver Name</label>
+              <input type="text" name="receiverName" id="receiverName" class="form-control" value="{{searchedPackage.receiverName}}" disabled>
+
+              <label for="receiverAddress" class="col-form-label">Rceiver Address</label>
+              <input type="text" name="receiverAddress" id="receiverAddress" class="form-control" value="{{searchedPackage.receiverAddress}}" disabled>
+
+              <label for="receiverContact" class="col-form-label">Reciver Contact Number</label>
+              <input type="text" name="receiverContact" id="receiverContact" class="form-control" value="{{searchedPackage.receiverContact}}" disabled>
+
+              <label for="receiverIdType" class="col-form-label">Type of the Reciver ID</label>
+              <input type="text" name="receiverIdType" id="receiverIdType" class="form-control" value="{{searchedPackage.receiverIdType}}" disabled>
+
+              <label for="receiverId" class="col-form-label">Receiver ID Number</label>
+              <input type="text" name="receiverId" id="receiverId" class="form-control" value="{{searchedPackage.receiverId}}" disabled>
+
+              <label for="qrCode" class="col-form-label">QR Code</label>
+              <qrcode [qrdata]="searchedPackage.qrCode" [width]=200></qrcode>
+            </form>
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

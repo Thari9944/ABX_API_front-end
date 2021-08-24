@@ -1,0 +1,135 @@
+<app-navbar-c></app-navbar-c>
+<div class="store-package">
+
+  <div class="search-package-container">
+    <h1>SEARCH PACKAGE DETAILS</h1>
+    <form>
+      <input [(ngModel)]="searchId" type="text" name="searchId" id="searchId" placeholder="  ex : (2021/ST/1001)">
+      <input id="searchbtn" type="button" value="SEARCH PACKAGE" (click)="searchPackageInStore()" data-bs-toggle="modal" data-bs-target="#searchPackage">
+    </form>
+  </div>
+
+  <!--Modal for search and edit-->
+  <!-- Modal -->
+  <div class="modal fade" id="searchPackage" tabindex="-1" aria-labelledby="searchPackageLabel" aria-hidden="true" style="color: #000000;">
+    <div class="modal-dialog modal-dialog-scrollable" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchPackageLabel">PACKAGE STORE DETAILS</h5>
+          <button type="button" class="btn btn-primary" style="margin-left: 10px;" (click)="editable()">EDIT</button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="isSearchId" class="modal-body">
+            <p>Input feild is empty. Please check again.</p>
+          </div>
+
+          <!--for  noPackage-->
+          <div *ngIf="isNotInStore" class="modal-body">
+            <p>Enterd REJISTRATION NUMBER doesn't match with our records.</p>
+          </div>
+
+          <div *ngIf="activeModal" class="modal-body">
+            <form  #storeEdit="ngForm" (ngSubmit)="editPackageInStore(storeEdit.value)" >
+              <label for="bearerName" class="col-form-label">Package Rejistration Number</label>
+              <input type="text" name="bearerName" id="bearerName" class="form-control" ngModel="{{searchedPackage.pkgRegistrationNumber}}" disabled>
+
+              <label for="stroeId" class="col-form-label">Store Type</label>
+                <select name="stroeId" id="storeId" class="form-select" ngModel="{{searchedPackage.storeId}}" disabled={{isNotEditable}}>
+                  <option value="S1">Store 1</option>
+                  <option value="S2">Store 2</option>
+                </select>
+
+                <label for="cupboardId" class="col-form-label">Cupboard</label>
+                <select name="cupboardId" id="cupboardId" class="form-select" ngModel="{{searchedPackage.cupboardId}}" disabled={{isNotEditable}}>
+                  <option value="C1">Cupboard 1</option>
+                  <option value="C2">Cupboard 2</option>
+                </select>
+
+              <label for="empId" class="col-form-label">Employee ID</label>
+              <input type="text" name="empId" id="empId" class="form-control" ngModel="{{searchedPackage.empId}}" disabled={{isNotEditable}}>
+
+              <label for="storeStatus" class="col-form-label">Store Status</label>
+              <input type="text" name="storeStatus" id="storeStatus" class="form-control" ngModel="{{searchedPackage.storeStatus}}" disabled>
+
+              <input type="submit" value="Save changes" class="btn btn-primary" data-bs-dismiss="modal" style="float: right; margin-top: 5px;">
+            </form>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <h1>STORE A PACKAGE</h1>
+  <div class="store-container">
+    <form  #storeForm="ngForm" (ngSubmit)="storePackage(storeForm.value)">
+      <div class="mb-3">
+        <label for="pkgRegistrationNumber" class="form-label">Package Registration Number</label>
+        <input type="input" class="form-control" id="pkgRegistrationNumber" name="pkgRegistrationNumber" placeholder="ex: (2021/ST/1001)" ngModel>
+      </div>
+      <div class="mb-3">
+        <label for="storeId" class="form-label">Store Type</label>
+        <select class="form-select" name="storeId" id="storeId" aria-label="Default select example" ngModel>
+          <option value="s1" selected>Store 1</option>
+          <option value="s2">Store 2</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="storeId" class="form-label">Cupboard</label>
+        <select class="form-select" name="cupboardId" id="cupboardId" aria-label="Default select example" ngModel>
+          <option value="c1">Cupboard 1</option>
+        <option value="c2">Cupboard 2</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="empId" class="form-label">Employee ID</label>
+        <input type="input" class="form-control" id="empId" name="empId" ngModel>
+      </div>
+      <button type="submit" class="btn btn-primary">STORE PACKAGE</button>
+    </form>
+  </div>
+
+  <h1>DELETE PACKAGE DETAILS</h1>
+  <div class="delete-package-container">
+    <form>
+      <div class="mb-3">
+        <input class="form-control" [(ngModel)]="deleteId" type="text" name="deleteReg" id="deleteReg" placeholder="ex : (2021/ST/1001)">
+        <input id="deletebtn" type="button" value="DELETE PACKAGE" class="btn btn-primary" (click)="deletePackageInStore()">
+      </div>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>
+
+
+
+
+
+<!-- <div class="store-package-container">
+    <form #storeForm="ngForm" (ngSubmit)="storePackage(storeForm.value)">
+      <label for="pkgRegistrationNumber"></label>
+
+
+      <label for="storeId">Store Type</label>
+      <select name="storeId" id="storeId" ngModel>
+        <option value="s1">Storage 1</option>
+        <option value="s2">Storage 2</option>
+      </select>
+
+      <label for="cupboardId">Store Type</label>
+      <select name="cupboardId" id="cupboardId" ngModel>
+        <option value="c1">Cupboard 1</option>
+        <option value="c2">Cupboard 2</option>
+      </select>
+
+    <label for="empId">Employee ID</label>
+    <input type="input" id="empId" name="empId" ngModel>
+
+    <input type="submit" value="STORE PACKAGE">
+    </form> -->
+

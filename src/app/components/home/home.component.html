@@ -1,0 +1,41 @@
+<div class="header" [class.header_scrolled]="isScrolled" id="header">
+  <div class="navbar" [class.navbar_scrolled]="isScrolled">
+    <div class="navbar-content">
+      <div class="logo">
+          <a href="#"><img src="../../../assets/images/logo/logo.png" alt="logo" class="mainlogo"></a>
+          <span class="logo-content">ABX DELIVERY SERVICE<br>
+            <b>SRI LANKA</b>
+          </span>
+      </div>
+      <div class="menu">
+          <ul class="navList">
+            <li><a href="#header">HOME</a></li>
+            <li><a href="#about">PACKAGES</a></li>
+            <li><a href="http://">EMPLOYEES</a></li>
+            <li><a href="http://">ABOUT</a></li>
+            <li><a href="http://">CONTACT</a></li>
+          </ul>
+          <div class="login"></div>
+          <div class="toggle" (click)="activeToggle()" [ngClass] = "toggleactive ? 'active' : 'toggle'"></div>
+      </div>
+    </div>
+    <div class="toggle-menu" [ngClass] = "toggleactive ? 'active' : 'toggle'">
+      <ul>
+        <li><a href="#header" (click)="activeToggle()">HOME</a></li>
+        <li><a href="#about" (click)="activeToggle()">PACKAGES</a></li>
+        <li><a href="#" (click)="activeToggle()">EMPLOYEES</a></li>
+        <li><a href="#" (click)="activeToggle()">ABOUT</a></li>
+        <li><a href="#" (click)="activeToggle()">CONTACT</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="header-content">
+    <h1><span style="color: #ffac2b;">DELIVER</span> PACKAGES <span class="thick">WITH</span> US</h1>
+    <p>We deliver pakages <b style="color: #ffac2b;">safely</b> and <b style="color: #ffac2b;">fast</b></p>
+    <div class="contact">
+      CONTACT US
+    </div>
+  </div>
+
+</div>

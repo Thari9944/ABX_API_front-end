@@ -1,0 +1,20 @@
+export interface IPackage {
+  pkgRegistrationNumber: string,
+  pkgTypeCode: string,
+  pkgWeightCategory:string,
+  bearerName: string,
+  bearerAddress: string,
+  contactDetails: string,
+  bearerIdType: string,
+  deliveryType: string,
+  deliveryDate: string,
+  receiverName: string,
+  receiverAddress: string,
+  receiverContact: string,
+  receiverIdType:string,
+  receiverId: string,
+  registrationStatus: string,
+  pkgId: string,
+  bearerId: string,
+  qrCode: string
+}

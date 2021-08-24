@@ -1,0 +1,50 @@
+@import url(../../../../node_modules/bootstrap/dist/css/bootstrap.css);
+
+.rejister-package{
+  padding-top: 80px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: url(../../../assets/images/back-grounds/pkg-bg.jfif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.savebtn{
+  float: right;
+  margin: 10px;
+}
+
+.rejister-package h1 {
+  text-align: center;
+}
+
+.rejister-package-container{
+  width: 60%;
+  margin: auto;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+  padding: 20px;
+  border-radius: 15px;
+  font-weight: bold;
+}
+
+.form-control, .form-select{
+  margin-bottom: 20px;
+}
+
+.form-check-label{
+  margin-left: 10px;
+}
+
+.form-check-input{
+  margin-left: 20px;
+}
+
+.express{
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 450px) {
+  .rejister-package-container{
+    width: 85%;
+  }
+}

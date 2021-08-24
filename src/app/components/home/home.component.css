@@ -1,0 +1,264 @@
+.header {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(../../../assets/images/back-grounds/bg4.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /*background-attachment: fixed;*/
+  height: 600px;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.5);
+  color: #ffffff;
+}
+
+/* .header_scrolled {
+  height: 500px;
+} */
+
+.thick{
+  font-weight: 200;
+}
+
+.header-content{
+  width: 30%;
+  margin-left: 6%;
+  padding-top: 100px;
+}
+
+.header-content p {
+  font-size: 1.5em;
+}
+
+.contact{
+  border: solid #ffac2b 2px;
+  text-align: center;
+  margin-top: 50px;
+  font-weight: 600;
+  padding: 20px 0;
+  max-width: 200px;
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 1000px) {
+
+  .header {
+    background-position: center;
+   }
+
+  .header-content{
+    width: 50%;
+  }
+
+  .header-content p {
+    font-size: 1.25em;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .header-content{
+    padding-top: 20px;
+  }
+
+  .mainlogo {
+    padding: 5PX;
+    width: 20px;
+    height: auto;
+    border-radius: 50%;
+  }
+}
+
+
+@media screen and (max-width: 330px){
+  .header-content{
+    font-size: 0.8em;
+  }
+}
+
+
+/*---Nav Bar Styles---*/
+
+.navbar{
+  width: 100%;
+  background-color:#ffffff;
+}
+
+.navbar_scrolled {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar-content {
+  width: 85%;
+  margin: 0 auto;
+  font-size: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+}
+
+.menu {
+  display: flex;
+}
+
+.mainlogo {
+  padding: 10PX;
+  width: 100px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.logo-content{
+  margin: 15px 5px;
+  color: #000000;
+}
+
+.navList{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.navList a {
+  text-decoration: none;
+  display: block;
+  color: #000000;
+  padding: .6em 1em;
+}
+
+.menu a:hover {
+  text-decoration: line-through;
+  font-size: large;
+}
+
+.menu a:hover {
+  text-decoration: line-through;
+}
+
+.toggle-menu {
+  display: none;
+}
+
+.login{
+  background-image: url(../../../assets/images/icons/business-icon-png-1934.png);
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  margin-top: 15px;
+  padding-top: 5px;
+  min-width: 30px;
+  min-height: 30px;
+  max-width: 30px;
+  max-height: 30px;
+  cursor: pointer;
+}
+
+
+/*side nav bar styles*/
+
+@media screen and (max-width: 1100px) {
+  .menu ul {
+    display: none;
+  }
+
+  .toggle {
+    display: flex;
+    background: url('../../../assets/images/icons/burger-icon.png');
+    background-size: cover;
+    background-position: center;
+    margin-top: 15px;
+    margin-left: 10px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    cursor: pointer;
+  }
+
+  .toggle.active {
+    background: url('../../../assets/images/icons/close-icon.png');
+    background-size: cover;
+    background-position: center;
+  }
+
+
+  .toggle-menu{
+    display: block;
+    position: fixed;
+    top: 10%;
+    left: -100%;
+    background-color: #ffffff;
+    transition: 0.75s;
+    width: 90%;
+    margin: 0 auto;
+   }
+
+  .toggle-menu.active {
+    left: 5%;
+    transition: 0.75s;
+  }
+
+  .toggle-menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .toggle-menu a {
+    text-decoration: none;
+    display: block;
+    color: #000000;
+    padding: .6em 1em;
+  }
+
+  .toggle-menu a:hover {
+    text-decoration: line-through;
+    font-size: large;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .navbar-content{
+    font-size: 0.75em;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .mainlogo {
+    width: 70px;
+    height: auto;
+    border-radius: 50%;
+  }
+
+  .logo-content{
+    margin: 10px 0;
+  }
+
+  .navbar-content {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 318px){
+  .navbar-content {
+    width: 97%;
+  }
+
+  .logo-content{
+    display: none;
+  }
+}
+

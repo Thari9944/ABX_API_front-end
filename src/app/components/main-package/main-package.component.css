@@ -1,0 +1,74 @@
+.package{
+  padding-top: 50px;
+  background-image: url('../../../assets/images/back-grounds/package.jpg');
+  background-size: cover;
+  background-position: right;
+  height: 600px;
+}
+
+.package-container {
+  width: 50%;
+  box-shadow: inset 0 0 0 1000px rgba(255,255,255,.5);
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 50px;
+  border-radius: 20px;
+}
+
+.s-line{
+  width: 100px;
+  height: 3px;
+  background-color: #333333;
+  border-style: none;
+  border-radius: 2px;
+}
+
+.l-line{
+  width: 500px;
+  height: 3px;
+  background-color: #ffac2b;
+  border-style: none;
+  border-radius: 2px;
+}
+
+.package-container h1 {
+  text-align: center;
+  padding-top: 20px;
+  margin: 0;
+}
+
+.package-container p{
+  padding: 20px;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.link-container{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+}
+
+.link-container a {
+  border: solid #ffac2b 3px;
+  border-radius: 5px;
+  padding: 20px 10px;
+  text-decoration: none;
+  margin: 10px 30px;
+  text-align: center;
+  color: #000000;
+  font-weight: bold;
+}
+
+
+@media screen and (max-width: 750px) {
+  .package-container {
+    width: 90%;
+    margin: auto;
+  }
+
+  .l-line{
+    width: 200px;
+  }
+}
+

@@ -1,0 +1,211 @@
+<app-navbar-c></app-navbar-c>
+
+<div class="rejister-package">
+  <h1>REGISTER PACKAGE IN OUR STORE</h1>
+  <div class="rejister-package-container">
+      <form #packageRejistrationForm="ngForm" (ngSubmit)="rejisterPackage(packageRejistrationForm.value)">
+
+        <!-- Bearer Details-->
+        <label for="bearerName" class="form-label">Bearer Name</label>
+        <input type="text" name="bearerName" id="bearerName" ngModel class="form-control">
+
+        <label for="bearerAddress" class="form-label">Bearer Address</label>
+        <input type="text" name="bearerAddress" id="bearerAddress" ngModel class="form-control">
+
+        <label for="contactDetails" class="form-label">Bearer Contact Number</label>
+        <input type="text" name="contactDetails" id="contactDetails" ngModel class="form-control">
+
+        <label for="bearerIdType" class="form-label">Type of the Bearer ID</label>
+        <select name="bearerIdType" id="bearerIdType" ngModel class="form-select" >
+          <option value="nic">National ID</option>
+          <option value="dl">Driving Licence</option>
+          <option value="ps">Passport</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <!--Package Details-->
+        <label for="bearerId" class="form-label">Bearer ID Number</label>
+        <input type="text" name="bearerId" id="bearerId" ngModel class="form-control">
+
+        <label for="deliveryDate" class="form-label">Delivery Date</label>
+        <input type="text" name="deliveryDate" id="deliveryDate" ngModel class="form-control">
+
+        <div class="radio-btn">
+          <label for="deliveryType" class="form-label">Deliverty Type</label>
+          <div class="normal">
+            <input class="form-check-input" type="radio" name="deliveryType" id="normal" value="Normal" ngModel>
+            <label for="normal" class="form-check-label">Normal</label>
+          </div>
+
+          <div class="express">
+            <input class="form-check-input" type="radio" name="deliveryType" id="express" value="Express" ngModel>
+            <label for="express" class="form-check-label">Express</label>
+          </div>
+        </div>
+
+        <label for="pkgTypeCode" class="form-label">Package Type</label>
+        <select name="pkgTypeCode" id="pkgTypeCode" ngModel class="form-select" >
+          <option value="EL">Electric Items</option>
+          <option value="FT">Food Item</option>
+          <option value="ST">Stationary Items</option>
+          <option value="OTHER">Other</option>
+        </select>
+
+        <label for="pkgWeightCategory" class="form-label">Weight Category</label>
+        <select name="pkgWeightCategory" id="pkgWeightCategory" ngModel class="form-select" >
+          <option value="l1">Less than 1 Kg</option>
+          <option value="l2">1 Kg - 2 Kg</option>
+          <option value="l3">2 kg - 5 Kg</option>
+          <option value="l4">More than 5 Kg</option>
+        </select>
+
+         Receiver Details
+        <label for="receiverName" class="form-label">Reaceiver Name</label>
+        <input type="text" name="receiverName" id="receiverName" ngModel class="form-control">
+
+        <label for="receiverAddress" class="form-label">Rceiver Address</label>
+        <input type="text" name="receiverAddress" id="receiverAddress" ngModel class="form-control">
+
+        <label for="receiverContact" class="form-label">Reciver Contact Number</label>
+        <input type="text" name="receiverContact" id="receiverContact"ngModel class="form-control">
+
+        <label for="receiverIdType" class="form-label">Type of the Reciver ID</label>
+        <select name="receiverIdType" id="receiverIdType" ngModel class="form-select" >
+          <option value="nic">National ID</option>
+          <option value="dl">Driving Licence</option>
+          <option value="ps">Passport</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="receiverId" class="form-label">Receiver ID Number</label>
+        <input type="text" name="receiverId" id="receiverId" ngModel class="form-control">
+
+        <input type="submit" value="REJISTER">
+
+      </form>
+  </div>
+
+  <!--Package Edit-->
+
+  <div class="edit-package-container">
+    <h1>EDIT PACKAGE DETAILS</h1>
+      <form>
+        <input [(ngModel)]="regNo" type="text" name="regNo" id="regNo" placeholder="Registration Number (eg : 2021/ST/1001)">
+        <input id="getbtn" type="button" value="EDIT DETAILS" (click)="getPackageDetails()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      </form>
+
+      <!-- Modal -->
+      <div  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">PACKAGE DETAILS</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!--for empty feild-->
+            <div *ngIf="isRegNo" class="modal-body">
+              <p>Input feild is empty. Please check again.</p>
+            </div>
+
+            <!--for  noPackage-->
+            <div *ngIf="noPackage" class="modal-body">
+              <p>Enterd REJISTRATION NUMBER doesn't match with our records.</p>
+            </div>
+
+            <div *ngIf="activeModal" class="modal-body">
+
+              <form  #packageEditForm="ngForm" (ngSubmit)="editPackage(packageEditForm.value)" >
+                <label for="bearerName" class="col-form-label">Bearer Name</label>
+                <input type="text" name="bearerName" id="bearerName" class="form-control" ngModel="{{searchedPackage.bearerName}}">
+
+                <label for="bearerAddress" class="col-form-label">Bearer Address</label>
+                <input type="text" name="bearerAddress" id="bearerAddress" class="form-control" ngModel="{{searchedPackage.bearerAddress}}">
+
+                <label for="contactDetails" class="col-form-label">Bearer Contact Number</label>
+                <input type="text" name="contactDetails" id="contactDetails" class="form-control" ngModel="{{searchedPackage.contactDetails}}">
+
+                <label for="bearerIdType" class="col-form-label">Type of the Bearer ID</label>
+                <select name="bearerIdType" id="bearerIdType" class="form-select" ngModel="{{searchedPackage.bearerIdType | lowercase}}">
+                  <!-- <option value="{{searchedPackage.bearerIdType | lowercase}}" selected>{{searchedPackage.bearerIdType}}</option> -->
+                  <option value="nic">National ID</option>
+                  <option value="dl">Driving Licence</option>
+                  <option value="ps">Passport</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <label for="bearerId" class="col-form-label">Bearer ID Number</label>
+                <input type="text" name="bearerId" id="bearerId" class="form-control" ngModel="{{searchedPackage.bearerId}}">
+
+                <label for="deliveryDate" class="col-form-label">Delivery Date</label>
+                <input type="text" name="deliveryDate" id="deliveryDate" class="form-control" ngModel="{{searchedPackage.deliveryDate}}">
+
+                <label for="deliveryType" class="col-form-label">Deliverty Type</label>
+                <select name="deliveryType" id="deliveryType" class="form-select" ngModel="{{searchedPackage.deliveryType}}">
+                  <!-- <option value="{{searchedPackage.deliveryType}}" selected>{{searchedPackage.deliveryType}}</option> -->
+                  <option value="NORMAL">Normal</option>
+                  <option value="EXPRESS">Express</option>
+                </select>
+
+                <label for="pkgTypeCode" class="col-form-label">Package Type</label>
+                <select name="pkgTypeCode" id="pkgTypeCode" class="form-select" ngModel="{{searchedPackage.pkgTypeCode}}">
+                  <!-- <option value="{{searchedPackage.pkgTypeCode}}" selected>{{searchedPackage.pkgTypeCode}}</option> -->
+                  <option value="EL">Electric Items</option>
+                  <option value="FT">Food Item</option>
+                  <option value="ST">Stationary Items</option>
+                  <option value="OTHER">Other</option>
+                </select>
+
+                <label for="pkgWeightCategory" class="col-form-label">Weight Category</label>
+                <select name="pkgWeightCategory" id="pkgWeightCategory" class="form-select" ngModel="{{searchedPackage.pkgWeightCategory | lowercase}}">
+                  <!-- <option value="{{searchedPackage.pkgWeightCategory}}" selected>{{searchedPackage.pkgWeightCategory}}</option> -->
+                  <option value="l1">Less than 1 Kg</option>
+                  <option value="l2">1 Kg - 2 Kg</option>
+                  <option value="l3">2 kg - 5 Kg</option>
+                  <option value="l4">More than 5 Kg</option>
+                </select>
+
+                <label for="receiverName" class="col-form-label">Reaceiver Name</label>
+                <input type="text" name="receiverName" id="receiverName" class="form-control" ngModel="{{searchedPackage.receiverName}}">
+
+                <label for="receiverAddress" class="col-form-label">Rceiver Address</label>
+                <input type="text" name="receiverAddress" id="receiverAddress" class="form-control" ngModel="{{searchedPackage.receiverAddress}}">
+
+                <label for="receiverContact" class="col-form-label">Receiver Contact Number</label>
+                <input type="text" name="receiverContact" id="receiverContact" class="form-control" ngModel="{{searchedPackage.receiverContact}}">
+
+                <label for="receiverIdType" class="col-form-label">Type of the Reciver ID</label>
+                <select name="receiverIdType" id="receiverIdType" selected class="form-select" ngModel="{{searchedPackage.receiverIdType|lowercase}}">
+                  <!-- <option value="{{searchedPackage.receiverIdType | lowercase}}" selected>{{searchedPackage.receiverIdType}}</option> -->
+                  <option value="nic">National ID</option>
+                  <option value="dl">Driving Licence</option>
+                  <option value="ps">Passport</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <label for="receiverId" class="col-form-label">Receiver ID Number</label>
+                <input type="text" name="receiverId" id="receiverId" class="form-control" ngModel="{{searchedPackage.receiverId}}">
+
+                <button type="submit" class="btn btn-primary savebtn" data-bs-dismiss="modal">Save changes</button>
+
+              </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <!--Package Delete-->
+    <div class="delete-package-container">
+      <h1>DELETE PACKAGE DETAILS</h1>
+      <form>
+        <input [(ngModel)]="deleteRegNo" type="text" name="deleteReg" id="deleteReg" placeholder="Registration Number (eg : 2021/ST/1001)">
+        <input id="getbtn" type="button" value="DELETE PACKAGE" (click)="deletePackage()">
+      </form>
+    </div>
+
+</div>
+<app-footer></app-footer>
+
