@@ -46,6 +46,8 @@
 .store-container, .delete-package-container{
   width: 40%;
   padding: 10px 10px 50px 10px;
+  color: #ffffff;
+  font-weight: bold;
 }
 
 #deletebtn{

@@ -1,5 +1,5 @@
 .package{
-  padding-top: 50px;
+  padding-top: 70px;
   background-image: url('../../../assets/images/back-grounds/package.jpg');
   background-size: cover;
   background-position: right;
@@ -72,3 +72,8 @@
   }
 }
 
+@media screen and (max-width: 350px){
+  .link-container a {
+    border: none;
+  }
+}

@@ -2,7 +2,7 @@
 <div class="store-package">
 
   <div class="search-package-container">
-    <h1>SEARCH PACKAGE ASSIGN DETAILS</h1>
+    <h1>SEARCH & EDIT PACKAGE ASSIGN DETAILS</h1>
     <form>
       <input [(ngModel)]="searchId" type="text" name="searchId" id="searchId" placeholder="  ex : (2021/ST/1001)">
       <input id="searchbtn" type="button" value="SEARCH PACKAGE" (click)="searchAssignedPackage()" data-bs-toggle="modal" data-bs-target="#searchPackage">
@@ -32,7 +32,7 @@
           <div *ngIf="activeModal" class="modal-body">
             <form  #storeEdit="ngForm" (ngSubmit)="editPackageInStore(storeEdit.value)" >
               <label for="bearerName" class="col-form-label">Package Rejistration Number</label>
-              <input type="text" name="bearerName" id="bearerName" class="form-control" ngModel="{{searchedPackage.pkgRegistrationNumber}}" disabled>
+              <input type="text" name="pkgRegistrationNumber" id="pkgRegistrationNumber" class="form-control" ngModel="{{searchedPackage.pkgRegistrationNumber}}" disabled={{isNotEditable}}>
 
               <label for="pkgAssignmentDetails" class="col-form-label">Package Assignment Details</label>
               <input type="input" class="form-control" id="pkgAssignmentDetails" name="pkgAssignmentDetails" ngModel="{{searchedPackage.pkgAssignmentDetails}}" disabled={{isNotEditable}}>
@@ -56,34 +56,34 @@
   </div>
 
 
-  <h1>STORE A PACKAGE</h1>
+  <h1 style="color: aliceblue;">STORE A PACKAGE</h1>
   <div class="store-container">
     <form  #assignForm="ngForm" (ngSubmit)="assignPackage(assignForm.value)">
       <div class="mb-3">
         <label for="pkgRegistrationNumber" class="form-label">Package Registration Number</label>
-        <input type="input" class="form-control" id="pkgRegistrationNumber" name="pkgRegistrationNumber" placeholder="ex: (2021/ST/1001)" ngModel>
+        <input #pkgRejistrationNumber="ngModel" type="input" class="form-control" id="pkgRegistrationNumber" name="pkgRegistrationNumber" placeholder="ex: (2021/ST/1001)" ngModel [class.is-invalid]="pkgRejistrationNumber.invalid && pkgRejistrationNumber.touched" required>
       </div>
 
       <div class="mb-3">
         <label for="pkgAssignmentDetails" class="form-label">Package Assignment Details</label>
-        <input type="input" class="form-control" id="pkgAssignmentDetails" name="pkgAssignmentDetails" ngModel>
+        <input #pkgAssignmentDetails="ngModel" type="input" class="form-control" id="pkgAssignmentDetails" name="pkgAssignmentDetails" ngModel [class.is-invalid]="pkgAssignmentDetails.invalid && pkgAssignmentDetails.touched" required>
       </div>
 
       <div class="mb-3">
         <label for="assineeId" class="form-label">Assignee ID</label>
-        <input type="input" class="form-control" id="assigneeId" name="assigneeId" ngModel>
+        <input #assineeId="ngModel" type="input" class="form-control" id="assigneeId" name="assigneeId" ngModel [class.is-invalid]="assineeId.invalid && assineeId.touched" required>
       </div>
 
       <div class="mb-3">
         <label for="assignerId" class="form-label">Assigner ID</label>
-        <input type="input" class="form-control" id="assignerId" name="assignerId" ngModel>
+        <input #assineerId="ngModel" type="input" class="form-control" id="assignerId" name="assignerId" ngModel [class.is-invalid]="assineerId.invalid && assineerId.touched" required>
       </div>
 
-      <button type="submit" class="btn btn-primary">STORE PACKAGE</button>
+      <button type="submit" class="btn btn-primary" [disabled]="assignForm.invalid">STORE PACKAGE</button>
     </form>
   </div>
 
-  <h1>DELETE PACKAGE DETAILS</h1>
+  <h1 style="color: aliceblue;">DELETE PACKAGE DETAILS</h1>
   <div class="delete-package-container">
     <form>
       <div class="mb-3">

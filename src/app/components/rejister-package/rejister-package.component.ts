@@ -16,17 +16,22 @@ export class RejisterPackageComponent implements OnInit {
   noPackage : boolean = false;
   activeModal : boolean = false;
 
+  //varibles for successfull messages
+  registerd : any = 0;
+  deleted: any = 0;
+
 
 
   constructor(private packageService: PackageService) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0)
   }
 
 
   rejisterPackage(data : any){
       this.packageService.rejisterPackage(data).subscribe(
-       (result) => console.log(result))
+       (result) => this.registerd = result)
   }
 
   async getPackageDetails(){
@@ -53,12 +58,14 @@ export class RejisterPackageComponent implements OnInit {
     this.packageService.editPackage(data, this.regNo).subscribe(
       (result) => console.log(result)
     )
+    this.regNo = '';
   }
 
   deletePackage(){
     this.packageService.deletePAckage(this.deleteRegNo).subscribe(
-      (result) => console.log(result)
+      (result) => this.deleted = result
     )
+    this.deleteRegNo = '';
   }
 
 }

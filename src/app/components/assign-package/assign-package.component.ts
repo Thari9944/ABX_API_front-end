@@ -34,13 +34,16 @@ export class AssignPackageComponent implements OnInit {
   }
 
   editPackageInStore(data: any){
-    this.packageService.editPackageInStore(data, this.searchId).subscribe(
+    console.log(data);
+    this.packageService.editAssignedPackage(data).subscribe(
       (result)=> console.log(result)
     )
   }
 
   deletePackageInStore(){
-
+    this.packageService.deleteAssignedPackage(this.deleteId).subscribe(
+      (result) => console.log(result)
+    )
   }
 
   async searchAssignedPackage(){

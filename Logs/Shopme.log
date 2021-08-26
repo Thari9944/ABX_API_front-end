@@ -1,1 +1,24 @@
-2021-08-25 00:24:12,156 [http-nio-8080-exec-10] INFO  c.e.d.c.PkgStoreDetailsController                  - Saveed package store details to the SQL database 
+2021-08-26 16:02:09,143 [main] INFO  c.e.d.DemoApplication                              - Starting DemoApplication using Java 16.0.2 on THARINDU-450G6 with PID 14092 (D:\ABX Package Delivery Service\ABX-delivery-app\demo-0.0.1-SNAPSHOT.jar started by TharinduWeerasinghe in D:\ABX Package Delivery Service\ABX-delivery-app) 
+2021-08-26 16:02:09,178 [main] INFO  c.e.d.DemoApplication                              - No active profile set, falling back to default profiles: default 
+2021-08-26 16:02:10,114 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Bootstrapping Spring Data JDBC repositories in DEFAULT mode. 
+2021-08-26 16:02:10,138 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Finished Spring Data repository scanning in 16 ms. Found 0 JDBC repository interfaces. 
+2021-08-26 16:02:10,941 [main] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat initialized with port(s): 8080 (http) 
+2021-08-26 16:02:11,003 [main] INFO  o.a.c.h.Http11NioProtocol                          - Initializing ProtocolHandler ["http-nio-8080"] 
+2021-08-26 16:02:11,004 [main] INFO  o.a.c.c.StandardService                            - Starting service [Tomcat] 
+2021-08-26 16:02:11,005 [main] INFO  o.a.c.c.StandardEngine                             - Starting Servlet engine: [Apache Tomcat/9.0.50] 
+2021-08-26 16:02:11,121 [main] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring embedded WebApplicationContext 
+2021-08-26 16:02:11,122 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext     - Root WebApplicationContext: initialization completed in 1880 ms 
+2021-08-26 16:02:11,171 [main] INFO  c.z.h.HikariDataSource                             - packagedb - Starting... 
+2021-08-26 16:02:12,366 [main] INFO  c.z.h.HikariDataSource                             - packagedb - Start completed. 
+2021-08-26 16:02:12,371 [main] INFO  o.s.b.a.h.H2ConsoleAutoConfiguration               - H2 console available at '/h2-console'. Database available at 'jdbc:mysql://localhost:3306/packagedb' 
+2021-08-26 16:02:13,177 [main] INFO  o.a.c.h.Http11NioProtocol                          - Starting ProtocolHandler ["http-nio-8080"] 
+2021-08-26 16:02:13,250 [main] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat started on port(s): 8080 (http) with context path '' 
+2021-08-26 16:02:13,262 [main] INFO  c.e.d.DemoApplication                              - Started DemoApplication in 4.554 seconds (JVM running for 6.73) 
+2021-08-26 16:03:42,918 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2021-08-26 16:03:42,919 [http-nio-8080-exec-1] INFO  o.s.w.s.DispatcherServlet                          - Initializing Servlet 'dispatcherServlet' 
+2021-08-26 16:03:42,923 [http-nio-8080-exec-1] INFO  o.s.w.s.DispatcherServlet                          - Completed initialization in 3 ms 
+2021-08-26 16:03:42,994 [http-nio-8080-exec-1] INFO  c.e.d.c.EmployeeController                         - Requested all employee details from the SQL database 
+2021-08-26 16:07:43,141 [http-nio-8080-exec-3] INFO  c.e.d.c.EmployeeController                         - Requested all employee details from the SQL database 
+2021-08-26 16:07:49,536 [http-nio-8080-exec-4] INFO  c.e.d.c.PkgController                              - Requested package details from the SQL database 
+2021-08-26 17:15:09,017 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource                             - packagedb - Shutdown initiated... 
+2021-08-26 17:15:09,028 [SpringApplicationShutdownHook] INFO  c.z.h.HikariDataSource                             - packagedb - Shutdown completed. 

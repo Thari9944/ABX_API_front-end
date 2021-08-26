@@ -1,5 +1,5 @@
+import { PackageService } from './../../services/package.service';
 import { IPackage } from './../../package';
-import { PackageService } from 'src/app/services/package.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -35,13 +35,16 @@ export class StorePackageComponent implements OnInit {
   }
 
   editPackageInStore(data: any){
-    this.packageService.editPackageInStore(data, this.searchId).subscribe(
+    console.log(data);
+    this.packageService.editPackageInStore(data).subscribe(
       (result)=> console.log(result)
     )
   }
 
   deletePackageInStore(){
-
+    this.packageService.deletePackageInStore(this.deleteId).subscribe(
+      (result) => console.log(result)
+    )
   }
 
   async searchPackageInStore(){

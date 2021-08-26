@@ -2,7 +2,7 @@
 <div class="store-package">
 
   <div class="search-package-container">
-    <h1>SEARCH PACKAGE DETAILS</h1>
+    <h1>SEARCH & EDIT PACKAGE DETAILS</h1>
     <form>
       <input [(ngModel)]="searchId" type="text" name="searchId" id="searchId" placeholder="  ex : (2021/ST/1001)">
       <input id="searchbtn" type="button" value="SEARCH PACKAGE" (click)="searchPackageInStore()" data-bs-toggle="modal" data-bs-target="#searchPackage">
@@ -31,11 +31,11 @@
 
           <div *ngIf="activeModal" class="modal-body">
             <form  #storeEdit="ngForm" (ngSubmit)="editPackageInStore(storeEdit.value)" >
-              <label for="bearerName" class="col-form-label">Package Rejistration Number</label>
-              <input type="text" name="bearerName" id="bearerName" class="form-control" ngModel="{{searchedPackage.pkgRegistrationNumber}}" disabled>
+              <label for="pkgRegistrationNumber" class="col-form-label">Package Rejistration Number</label>
+              <input type="text" name="pkgRegistrationNumber" id="pkgRegistrationNumber" class="form-control" ngModel="{{searchedPackage.pkgRegistrationNumber}}" disabled={{isNotEditable}}>
 
               <label for="stroeId" class="col-form-label">Store Type</label>
-                <select name="stroeId" id="storeId" class="form-select" ngModel="{{searchedPackage.storeId}}" disabled={{isNotEditable}}>
+                <select name="storeId" id="storeId" class="form-select" ngModel="{{searchedPackage.storeId}}" disabled={{isNotEditable}}>
                   <option value="S1">Store 1</option>
                   <option value="S2">Store 2</option>
                 </select>
@@ -70,27 +70,27 @@
     <form  #storeForm="ngForm" (ngSubmit)="storePackage(storeForm.value)">
       <div class="mb-3">
         <label for="pkgRegistrationNumber" class="form-label">Package Registration Number</label>
-        <input type="input" class="form-control" id="pkgRegistrationNumber" name="pkgRegistrationNumber" placeholder="ex: (2021/ST/1001)" ngModel>
+        <input #pkgRejistrationNumber="ngModel" type="input" class="form-control" id="pkgRegistrationNumber" name="pkgRegistrationNumber" placeholder="ex: (2021/ST/1001)" ngModel [class.is-invalid]="pkgRejistrationNumber.invalid && pkgRejistrationNumber.touched" required>
       </div>
       <div class="mb-3">
         <label for="storeId" class="form-label">Store Type</label>
-        <select class="form-select" name="storeId" id="storeId" aria-label="Default select example" ngModel>
+        <select #storeId="ngModel" class="form-select" name="storeId" id="storeId" aria-label="Default select example" ngModel [class.is-invalid]="storeId.invalid && storeId.touched" required>
           <option value="s1" selected>Store 1</option>
           <option value="s2">Store 2</option>
         </select>
       </div>
       <div class="mb-3">
-        <label for="storeId" class="form-label">Cupboard</label>
-        <select class="form-select" name="cupboardId" id="cupboardId" aria-label="Default select example" ngModel>
+        <label for="cupboardId" class="form-label">Cupboard</label>
+        <select #cupboardId="ngModel" class="form-select" name="cupboardId" id="cupboardId" aria-label="Default select example" ngModel [class.is-invalid]="cupboardId.invalid && cupboardId.touched" required>
           <option value="c1">Cupboard 1</option>
         <option value="c2">Cupboard 2</option>
         </select>
       </div>
       <div class="mb-3">
         <label for="empId" class="form-label">Employee ID</label>
-        <input type="input" class="form-control" id="empId" name="empId" ngModel>
+        <input #empId="ngModel" type="input" class="form-control" id="empId" name="empId" ngModel [class.is-invalid]="empId.invalid && empId.touched" required>
       </div>
-      <button type="submit" class="btn btn-primary">STORE PACKAGE</button>
+      <button type="submit" class="btn btn-primary" [disabled]="storeForm.invalid">STORE PACKAGE</button>
     </form>
   </div>
 

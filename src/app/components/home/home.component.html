@@ -10,10 +10,9 @@
       <div class="menu">
           <ul class="navList">
             <li><a href="#header">HOME</a></li>
-            <li><a href="#about">PACKAGES</a></li>
-            <li><a href="http://">EMPLOYEES</a></li>
-            <li><a href="http://">ABOUT</a></li>
-            <li><a href="http://">CONTACT</a></li>
+            <li><a href="#packages">PACKAGES</a></li>
+            <li><a href="#employees">EMPLOYEES</a></li>
+            <li><a href="#contact">CONTACT</a></li>
           </ul>
           <div class="login"></div>
           <div class="toggle" (click)="activeToggle()" [ngClass] = "toggleactive ? 'active' : 'toggle'"></div>
@@ -22,10 +21,9 @@
     <div class="toggle-menu" [ngClass] = "toggleactive ? 'active' : 'toggle'">
       <ul>
         <li><a href="#header" (click)="activeToggle()">HOME</a></li>
-        <li><a href="#about" (click)="activeToggle()">PACKAGES</a></li>
-        <li><a href="#" (click)="activeToggle()">EMPLOYEES</a></li>
-        <li><a href="#" (click)="activeToggle()">ABOUT</a></li>
-        <li><a href="#" (click)="activeToggle()">CONTACT</a></li>
+        <li><a href="#packages" (click)="activeToggle()">PACKAGES</a></li>
+        <li><a href="#employees" (click)="activeToggle()">EMPLOYEES</a></li>
+        <li><a href="#contact" (click)="activeToggle()">CONTACT</a></li>
       </ul>
     </div>
   </div>

@@ -1,5 +1,50 @@
-<div class="employee">
+<div class="employee" id="employees">
+  <h1>EMPLOYEE</h1>
+  <!-- <hr class="l-line" >
+  <hr class="s-line"> -->
+
   <div class="employee-container">
-    <h1>EMPLOYEE</h1>
+
+    <div class="employee-rejistration">
+      <h4>Rejister a Employee</h4>
+      <div class="employee-rejistration-form">
+        <form #employeeRejisterForm="ngForm" (ngSubmit)="rejisterEmployee(employeeRejisterForm.value)">
+          <div class="mb-3">
+            <label for="empId" class="form-label">Employee ID</label>
+            <input #empId="ngModel" type="text" class="form-control" id="empId" name="empId" [class.is-invalid]="empId.invalid && empId.touched" required ngModel>
+            <small class="invalid-feedback" [class.d-none]="empId.valid || empId.untouched">Employee Id is required.</small>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Employee Name</label>
+            <input #name="ngModel" type="text" class="form-control" id="name" name="name" [class.is-invalid]="name.invalid && name.touched" required ngModel>
+            <small class="invalid-feedback" [class.d-none]="name.valid || name.untouched">Employee Name is required.</small>
+          </div>
+
+          <input type="submit" value="REJISTER" class="btn btn-dark" [disabled]="employeeRejisterForm.invalid">
+        </form>
+      </div>
+    </div>
+
+    <div class="employee-view">
+      <table class="table table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Delete Employee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{employee.empId}}</td>
+            <td>{{employee.name}}</td>
+            <td><button type="button" class="btn btn-danger" (click)="deleteEmployee(employee.empId)">Delete</button></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
   </div>
+
 </div>

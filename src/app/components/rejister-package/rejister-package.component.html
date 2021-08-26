@@ -1,34 +1,44 @@
 <app-navbar-c></app-navbar-c>
 
 <div class="rejister-package">
-  <h1>REGISTER PACKAGE IN OUR STORE</h1>
+  <h1 style="text-align: center;">REGISTER PACKAGE IN OUR STORE</h1>
   <div class="rejister-package-container">
       <form #packageRejistrationForm="ngForm" (ngSubmit)="rejisterPackage(packageRejistrationForm.value)">
 
         <!-- Bearer Details-->
         <label for="bearerName" class="form-label">Bearer Name</label>
-        <input type="text" name="bearerName" id="bearerName" ngModel class="form-control">
+        <input #beareName="ngModel" type="text" name="bearerName" id="bearerName" class="form-control" [class.is-invalid]="beareName.invalid && beareName.touched" required ngModel >
+        <small class="invalid-feedback" [class.d-none]="beareName.valid || beareName.untouched">* Bearer Name is Reqired.</small>
 
         <label for="bearerAddress" class="form-label">Bearer Address</label>
-        <input type="text" name="bearerAddress" id="bearerAddress" ngModel class="form-control">
+        <input #bearerAddress="ngModel" type="text" name="bearerAddress" id="bearerAddress" ngModel class="form-control" [class.is-invalid]="bearerAddress.invalid && bearerAddress.touched" required>
+        <small class="invalid-feedback" [class.d-none]="bearerAddress.valid || bearerAddress.untouched">* Bearer Address is Reqired.</small>
 
         <label for="contactDetails" class="form-label">Bearer Contact Number</label>
-        <input type="text" name="contactDetails" id="contactDetails" ngModel class="form-control">
+        <input type="text" name="contactDetails" id="contactDetails" ngModel class="form-control" #contactDetails="ngModel" [class.is-invalid]="contactDetails.invalid && contactDetails.touched" required pattern="\d{10}">
+        <small class="invalid-feedback" [class.d-none]="contactDetails.valid || contactDetails.untouched">* Bearer Contact Details is Reqired and must contain 10 numbers.</small>
+        <!-- <div *ngIf="contactDetails.invalid || contactDetails.touched">
+          <small class="invalid-feedback" >Phone Number is Required.</small>
+          <small class="invalid-feedback" *ngIf="contactDetails.errors?.pattern">Phone Number must contain 10 digits.</small>
+        </div> -->
 
         <label for="bearerIdType" class="form-label">Type of the Bearer ID</label>
-        <select name="bearerIdType" id="bearerIdType" ngModel class="form-select" >
+        <select name="bearerIdType" id="bearerIdType" ngModel class="form-select" #bearerIdType="ngModel" [class.is-invalid]="bearerIdType.invalid && bearerIdType.touched" required>
           <option value="nic">National ID</option>
           <option value="dl">Driving Licence</option>
           <option value="ps">Passport</option>
           <option value="Other">Other</option>
         </select>
+        <small class="invalid-feedback" [class.d-none]="bearerIdType.valid || bearerIdType.untouched">* Select the ID type.</small>
+
+        <label for="bearerId" class="form-label">Bearer ID Number</label>
+        <input type="text" name="bearerId" id="bearerId" ngModel class="form-control" #bearerId="ngModel" [class.is-invalid]="bearerId.invalid && bearerId.touched" required>
+        <small class="invalid-feedback" [class.d-none]="bearerId.valid || bearerId.untouched">* Bearer ID is Required.</small>
 
         <!--Package Details-->
-        <label for="bearerId" class="form-label">Bearer ID Number</label>
-        <input type="text" name="bearerId" id="bearerId" ngModel class="form-control">
-
         <label for="deliveryDate" class="form-label">Delivery Date</label>
-        <input type="text" name="deliveryDate" id="deliveryDate" ngModel class="form-control">
+        <input type="text" name="deliveryDate" id="deliveryDate" ngModel class="form-control" placeholder="ex : (2021/08/25)" #deliveryDate="ngModel" [class.is-invalid]="deliveryDate.invalid && deliveryDate.touched" required>
+        <small class="invalid-feedback" [class.d-none]="deliveryDate.valid || deliveryDate.untouched">* Package delivery date is Reqired.</small>
 
         <div class="radio-btn">
           <label for="deliveryType" class="form-label">Deliverty Type</label>
@@ -44,54 +54,82 @@
         </div>
 
         <label for="pkgTypeCode" class="form-label">Package Type</label>
-        <select name="pkgTypeCode" id="pkgTypeCode" ngModel class="form-select" >
+        <select name="pkgTypeCode" id="pkgTypeCode" ngModel class="form-select" #pkgTypeCode="ngModel" [class.is-invalid]="pkgTypeCode.invalid && pkgTypeCode.touched" required>
           <option value="EL">Electric Items</option>
           <option value="FT">Food Item</option>
           <option value="ST">Stationary Items</option>
           <option value="OTHER">Other</option>
         </select>
+        <small class="invalid-feedback" [class.d-none]="pkgTypeCode.valid || pkgTypeCode.untouched">* Select the package weight category.</small>
 
         <label for="pkgWeightCategory" class="form-label">Weight Category</label>
-        <select name="pkgWeightCategory" id="pkgWeightCategory" ngModel class="form-select" >
+        <select name="pkgWeightCategory" id="pkgWeightCategory" ngModel class="form-select" #pkgWeightCategory="ngModel" [class.is-invalid]="pkgWeightCategory.invalid && pkgWeightCategory.touched" required>
           <option value="l1">Less than 1 Kg</option>
           <option value="l2">1 Kg - 2 Kg</option>
           <option value="l3">2 kg - 5 Kg</option>
           <option value="l4">More than 5 Kg</option>
         </select>
+        <small class="invalid-feedback" [class.d-none]="pkgWeightCategory.valid || pkgWeightCategory.untouched">* Select the Weight category</small>
 
-         Receiver Details
+         <!--Receiver Details-->
         <label for="receiverName" class="form-label">Reaceiver Name</label>
-        <input type="text" name="receiverName" id="receiverName" ngModel class="form-control">
+        <input type="text" name="receiverName" id="receiverName" ngModel class="form-control" #receiverName="ngModel" [class.is-invalid]="receiverName.invalid && receiverName.touched" required>
+        <small class="invalid-feedback" [class.d-none]="receiverName.valid || receiverName.untouched">* Receiver name is Reqired.</small>
 
         <label for="receiverAddress" class="form-label">Rceiver Address</label>
-        <input type="text" name="receiverAddress" id="receiverAddress" ngModel class="form-control">
+        <input type="text" name="receiverAddress" id="receiverAddress" ngModel class="form-control" #receiverAddress="ngModel" [class.is-invalid]="receiverAddress.invalid && receiverAddress.touched" required>
+        <small class="invalid-feedback" [class.d-none]="receiverAddress.valid || receiverAddress.untouched">* Receiver address is Reqired.</small>
 
         <label for="receiverContact" class="form-label">Reciver Contact Number</label>
-        <input type="text" name="receiverContact" id="receiverContact"ngModel class="form-control">
+        <input type="text" name="receiverContact" id="receiverContact"ngModel class="form-control" #receiverContact="ngModel" [class.is-invalid]="receiverContact.invalid && receiverContact.touched" required required pattern="\d{10}">
+        <small class="invalid-feedback" [class.d-none]="receiverContact.valid || receiverContact.untouched">* Receiver Phone number is Required and it must contain 10 digits.</small>
 
         <label for="receiverIdType" class="form-label">Type of the Reciver ID</label>
-        <select name="receiverIdType" id="receiverIdType" ngModel class="form-select" >
+        <select name="receiverIdType" id="receiverIdType" ngModel class="form-select" #receiverIdType="ngModel" [class.is-invalid]="receiverIdType.invalid && receiverIdType.touched" required>
           <option value="nic">National ID</option>
           <option value="dl">Driving Licence</option>
           <option value="ps">Passport</option>
           <option value="Other">Other</option>
         </select>
+        <small class="invalid-feedback" [class.d-none]="receiverIdType.valid || receiverIdType.untouched">* Select the receiver ID type.</small>
 
         <label for="receiverId" class="form-label">Receiver ID Number</label>
-        <input type="text" name="receiverId" id="receiverId" ngModel class="form-control">
+        <input type="text" name="receiverId" id="receiverId" ngModel class="form-control" #receiverId="ngModel" [class.is-invalid]="receiverId.invalid && receiverId.touched" required>
+        <small class="invalid-feedback" [class.d-none]="receiverId.valid || receiverId.untouched">* Receiver ID is Reqired.</small>
 
-        <input type="submit" value="REJISTER">
+        <input type="submit" value="REJISTER" class="btn btn-primary rbtn" (click)="packageRejistrationForm.reset()" style="float: right;" data-bs-toggle="modal" data-bs-target="#packageregStatus" [disabled]="packageRejistrationForm.invalid">
 
       </form>
   </div>
+
+  <!--Modal for package registration status-->
+  <div class="modal fade" id="packageregStatus" tabindex="-1" aria-labelledby="packageregStatusLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="packageregStatusLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p *ngIf="registerd == 0">Registration Faild. Please try again...</p>
+          <p *ngIf="registerd == 1">Registration Success.</p>
+          <p *ngIf="registerd == 2">Database Error. Please try again...</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!--Package Edit-->
 
   <div class="edit-package-container">
     <h1>EDIT PACKAGE DETAILS</h1>
       <form>
-        <input [(ngModel)]="regNo" type="text" name="regNo" id="regNo" placeholder="Registration Number (eg : 2021/ST/1001)">
-        <input id="getbtn" type="button" value="EDIT DETAILS" (click)="getPackageDetails()" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <input [(ngModel)]="regNo" type="text" name="regNo" id="regNo" placeholder="ex :(2021/ST/1001)" class="e-d-input">
+        <input id="getbtn" type="button" value="EDIT DETAILS" (click)="getPackageDetails()" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-dark e-d-btn">
       </form>
 
       <!-- Modal -->
@@ -201,10 +239,30 @@
     <div class="delete-package-container">
       <h1>DELETE PACKAGE DETAILS</h1>
       <form>
-        <input [(ngModel)]="deleteRegNo" type="text" name="deleteReg" id="deleteReg" placeholder="Registration Number (eg : 2021/ST/1001)">
-        <input id="getbtn" type="button" value="DELETE PACKAGE" (click)="deletePackage()">
+        <input [(ngModel)]="deleteRegNo" type="text" name="deleteReg" id="deleteReg" placeholder="eg : (2021/ST/1001)" class="e-d-input">
+        <input id="getbtn" type="button" value="DELETE PACKAGE" (click)="deletePackage()" class="btn btn-dark e-d-btn" data-bs-toggle="modal" data-bs-target="#packagedeleteStatus">
       </form>
     </div>
+
+    <!--Modal for package registration status data-bs-toggle="modal" data-bs-target="#packageregStatus"-->
+  <div class="modal fade" id="packagedeleteStatus" tabindex="-1" aria-labelledby="packagedeleteStatusLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="packagedeleteStatusLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p *ngIf="deleted == 0">Deleleting Package is Faild. Please try again...</p>
+          <p *ngIf="deleted == 1">Successfully deleted..</p>
+          <p *ngIf="deleted == 2">Database Error. Please try again...</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 <app-footer></app-footer>

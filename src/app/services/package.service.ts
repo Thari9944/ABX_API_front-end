@@ -34,7 +34,7 @@ export class PackageService {
     return this.http.post("http://localhost:8080/webapi/store/storePackage", sPackage);
   }
 
-  editPackageInStore(ePackage: any, id : string){
+  editPackageInStore(ePackage: any){
     return this.http.post("http://localhost:8080/webapi/store/update", ePackage);
   }
 
